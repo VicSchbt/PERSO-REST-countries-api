@@ -25,15 +25,15 @@ const HomePage = () => {
 	}, []);
 
 	return (
-		<main className='px-8'>
-			<section>
+		<main className='px-20'>
+			<section className='py-12 flex justify-between'>
 				<SearchBar />
 				<FilterSelect />
 			</section>
 			{loading ? (
 				<p className='text-white'>loading</p>
 			) : (
-				<section className='grid grid-cols-4 gap-2'>
+				<section className='grid grid-cols-4 gap-20'>
 					{countries.map((country) => (
 						<CountryCard
 							key={country.name}
