@@ -6,10 +6,15 @@ import CountryCard from '../components/CountryCard';
 const HomePage = () => {
 	const [countries, setCountries] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [region, setRegion] = useState('');
 
 	useEffect(() => {
 		const fetchCountries = async () => {
-			const apiUrl = '/api/countries?_limit=8';
+			const apiUrl =
+				region === ''
+					? '/api/countries?_limit=8'
+					: `/api/countries?region=${region}&_limit=8`;
+			console.log(apiUrl);
 			try {
 				const res = await fetch(apiUrl);
 				const data = await res.json();
@@ -22,13 +27,20 @@ const HomePage = () => {
 		};
 
 		fetchCountries();
-	}, []);
+	}, [region]);
+
+	const handleFilter = (region) => {
+		setRegion(region);
+	};
 
 	return (
 		<main className='px-20'>
 			<section className='py-12 flex justify-between'>
 				<SearchBar />
-				<FilterSelect />
+				<FilterSelect
+					region={region}
+					onChangeFilter={(region) => handleFilter(region)}
+				/>
 			</section>
 			{loading ? (
 				<p className='text-white'>loading</p>
