@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CountryCard = ({ country }) => {
 	return (
-		<div className='bg-dark-blue rounded flex flex-col justify-between'>
+		<Link
+			to={`/${country.alpha3Code}`}
+			className='bg-dark-blue rounded flex flex-col justify-between'
+		>
 			<img
 				className='w-full rounded-t'
 				src={country.flags.png}
@@ -23,7 +27,7 @@ const CountryCard = ({ country }) => {
 					<span className='font-semibold'>Capital:</span> {country.capital}
 				</p>
 			</div>
-		</div>
+		</Link>
 	);
 };
 

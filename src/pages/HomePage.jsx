@@ -14,7 +14,6 @@ const HomePage = () => {
 				region === ''
 					? '/api/countries?_limit=8'
 					: `/api/countries?region=${region}&_limit=8`;
-			console.log(apiUrl);
 			try {
 				const res = await fetch(apiUrl);
 				const data = await res.json();

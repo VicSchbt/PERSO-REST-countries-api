@@ -8,6 +8,7 @@ import {
 
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
+import CountryPage, { countryLoader } from './pages/CountryPage';
 
 const App = () => {
 	const router = createBrowserRouter(
@@ -19,6 +20,12 @@ const App = () => {
 				<Route
 					index
 					element={<HomePage />}
+				/>
+
+				<Route
+					path='/:id'
+					element={<CountryPage />}
+					loader={countryLoader}
 				/>
 			</Route>
 		)
