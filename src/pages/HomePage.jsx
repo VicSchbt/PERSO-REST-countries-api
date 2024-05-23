@@ -35,7 +35,7 @@ const HomePage = () => {
   return (
     <>
       <section className="py-12 flex justify-between">
-        <SearchBar />
+        <SearchBar setCountries={setCountries} />
         <FilterSelect
           region={region}
           onChangeFilter={(region) => handleFilter(region)}
